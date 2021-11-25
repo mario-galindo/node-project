@@ -25,3 +25,5 @@ stages:
         containerRegistry: 'Container Registry Connection'
         tags: |
           $(tag)
+    - publish: '$(Build.SourcesDirectory)/kubernetes'
+      artifact: manifests
