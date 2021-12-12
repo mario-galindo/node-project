@@ -1,8 +1,17 @@
-const express = require('express')
+const express = require("express");
+const dotenv = require("dotenv");
 
 const app = express();
+dotenv.config();
 
-app.get('/',(req, res)=> res.send("<h1>Hello from node by HTML | new v3.0</h1>"))
+const PORT = process.env.PORT;
+const NODE_ENV = process.env.NODE_ENV;
 
-app.listen(3000)
-console.log("Server on port 3000")
+app.get("/", (req, res) =>
+  res.send(
+    `<p>Node.js Backend <br><strong>Environment</strong> : ${NODE_ENV} <br><strong>Host</strong>: ${req.hostname}</p>`
+  )
+);
+
+app.listen(PORT);
+console.log(`Server on port: ${PORT}, Environment: ${NODE_ENV}`);
