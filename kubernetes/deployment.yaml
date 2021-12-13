@@ -17,7 +17,7 @@ spec:
         image: tailspinspacegame9149.azurecr.io/app/web
         env:
         - name: PORT
-          value: 3000
+          value: "3000"
         - name: NODE_ENV
           value: "Development"
         ports:
