@@ -34,5 +34,6 @@ spec:
   type: ClusterIP
   ports:
   - port: 80
+    targetPort: 3001
   selector:
     app: usersbackend
