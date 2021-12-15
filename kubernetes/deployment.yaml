@@ -1,26 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app
+  name: usersbackend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      role: node-app
+      role: usersbackend
   template:
     metadata:
       labels:
-        role: node-app
+        role: usersbackend
     spec:
       containers:
       - name: node-app
         image: tailspinspacegame9149.azurecr.io/app/web
         env:
         - name: PORT
-          value: "3000"
+          value: "3001"
         - name: NODE_ENV
           value: "Development"
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
       imagePullSecrets:
       - name: acrdemo2ss-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usersbackend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3001
+  selector:
+    app: usersbackend
