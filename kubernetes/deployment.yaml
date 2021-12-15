@@ -13,7 +13,7 @@ spec:
         role: usersbackend
     spec:
       containers:
-      - name: node-app
+      - name: usersbackend
         image: tailspinspacegame9149.azurecr.io/app/web
         env:
         - name: PORT
