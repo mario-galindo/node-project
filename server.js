@@ -6,22 +6,31 @@ const { port, node_env } = require("./config");
 app.get("/", (req, res) =>
   res.send([
     {
-      Name: "Mario",
-      City: "Berlin",
-      Environment: node_env,
-      Host: req.hostname,
+      id: 1,
+      name: "Mario Galindo",
+      username: "mgalindo",
+      email: "mgalindo@devinhn.com",
+      phone: "+504-9826-415",
+      environment: node_env,
+      host: req.hostname,
     },
     {
-      Name: "Daniela",
-      City: "Miami",
-      Environment: node_env,
-      Host: req.hostname,
+      id: 2,
+      name: "Victoria Loz",
+      username: "vloz",
+      email: "victoria@devinhn.com",
+      phone: "+505-9726-415",
+      environment: node_env,
+      host: req.hostname,
     },
     {
-      Name: "Thomas",
-      City: "Hamburg",
-      Environment: node_env,
-      Host: req.hostname,
+      id: 3,
+      name: "Max Ham",
+      username: "mham",
+      email: "mham@devinhn.com",
+      phone: "+503-9826-475",
+      environment: node_env,
+      host: req.hostname,
     },
   ])
 );
