@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: usersbackend
-        image: tailspinspacegame9149.azurecr.io/app/web
+        image: tailspinspacegame9149.azurecr.io/app/web:latest
         env:
         - name: PORT
           value: "3001"
