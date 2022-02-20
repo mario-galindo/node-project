@@ -7,6 +7,25 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+- stage: 'Testing'
+  displayName: 'Build and Test'
+  jobs:  
+  - job: 'Testing'
+    displayName: 'Build job'
+    pool:
+      vmImage: 'ubuntu-20.04'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'Install Node.js'
+    
+    - task: Npm@1
+      displayName: 'Install NPM Packages'
+      inputs:
+        command: install
+    
+
 - stage: 'Build'
   displayName: 'Build and push'
   jobs:  
