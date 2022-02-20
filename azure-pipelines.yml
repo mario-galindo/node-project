@@ -49,7 +49,7 @@ stages:
         summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
 
 - stage: 'Build'
-  displayName: 'Docker Build and push'
+  displayName: 'Docker Build and Push'
   jobs:  
   - job: 'Build'
     displayName: 'Docker job'
