@@ -39,6 +39,15 @@ stages:
         testResultsFiles: '$(Build.SourcesDirectory)/junit.xml'
         failTaskOnFailedTests: false
 
+    - script: |
+        npm run coverage
+      displayName: 'npm output coverage'
+
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+
 - stage: 'Build'
   displayName: 'Build and push'
   jobs:  
