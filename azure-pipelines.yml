@@ -8,7 +8,7 @@ variables:
 
 stages:
 - stage: 'Testing'
-  displayName: 'Build and Test'
+  displayName: 'App Build and Test'
   jobs:  
   - job: 'Testing'
     displayName: 'Build job'
@@ -49,10 +49,10 @@ stages:
         summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
 
 - stage: 'Build'
-  displayName: 'Build and push'
+  displayName: 'Docker Build and push'
   jobs:  
   - job: 'Build'
-    displayName: 'Build job'
+    displayName: 'Docker job'
     pool:
       vmImage: 'ubuntu-20.04'
     steps:
