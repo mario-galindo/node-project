@@ -24,7 +24,20 @@ stages:
       displayName: 'Install NPM Packages'
       inputs:
         command: install
-    
+
+    - task: Npm@1
+      displayName: NPM Run Test
+      inputs:
+        command: 'custom'
+        workingDir: '$(Build.SourcesDirectory)'
+        customCommand: 'run test:ci'
+
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results to Pipelines'
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFiles: '$(Build.SourcesDirectory)/junit.xml'
+        failTaskOnFailedTests: false
 
 - stage: 'Build'
   displayName: 'Build and push'
