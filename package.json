@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test:ci": "npm run test -- --watchAll=false --reporters=default --reporters=jest-junit"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,10 @@
   "devDependencies": {
     "jest": "^27.5.1",
     "jest-junit": "^13.0.0"
+  },
+  "jest-junit": {
+    "suiteNameTemplate": "{filepath}",
+    "outputDirectory": ".",
+    "outputName": "junit.xml"
   }
 }
