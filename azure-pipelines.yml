@@ -8,7 +8,7 @@ variables:
 
 stages:
 - stage: 'Testing'
-  displayName: 'App Build and Test'
+  displayName: 'App Build & Test'
   jobs:  
   - job: 'Testing'
     displayName: 'Build job'
@@ -49,7 +49,7 @@ stages:
         summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
 
 - stage: 'Build'
-  displayName: 'Docker Build and Push'
+  displayName: 'Docker Build & Push'
   jobs:  
   - job: 'Build'
     displayName: 'Docker job'
