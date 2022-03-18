@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "node server.js",
     "test:ci": "npm run test -- --watchAll=false --reporters=default --reporters=jest-junit || exit 0",
-    "coverage": "jest --coverage --collectCoverageFrom=/domain/*.js --coverageReporters=cobertura"
+    "coverage": "jest --coverage --collectCoverageFrom=domain/*.js --coverageReporters=cobertura"
   },
   "keywords": [],
   "author": "",
