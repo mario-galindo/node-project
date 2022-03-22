@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config ./jest.config.json",
     "start": "node server.js",
     "test:ci": "npm run test -- --watchAll=false --reporters=default --reporters=jest-junit || exit 0",
     "coverage": "jest --coverage --collectCoverageFrom=domain/*.js --coverageReporters=cobertura"
@@ -24,15 +24,5 @@
     "suiteNameTemplate": "{filepath}",
     "outputDirectory": ".",
     "outputName": "junit.xml"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": -10
-      }
-    }
   }
 }
