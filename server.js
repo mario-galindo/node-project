@@ -10,7 +10,7 @@ app.get("/", (req, res) =>
       name: "Mario Galindo",
       username: "mgalindo",
       email: "mgalindo@devinhn.com",
-      phone: "+505-9826-0415",
+      phone: "+505-9826-0414",
       environment: node_env,
       host: req.hostname,
     },
