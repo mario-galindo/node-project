@@ -17,7 +17,7 @@ stages:
     steps:
     - script: |
       mkdir report
-    displayName: "Install Trivy"
+    displayName: 'Install Trivy'
     
 - stage: 'Testing'
   displayName: 'App Build & Test'
