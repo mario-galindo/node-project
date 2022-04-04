@@ -16,7 +16,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - script: |
-      mkdir report
+        mkdir report
     displayName: 'Install Trivy'
     
 - stage: 'Testing'
