@@ -7,6 +7,18 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+- stage: 'DevSecOps'
+  displayName: 'Vulnerabilities Scans'
+  jobs:  
+  - job: 'Scan'
+    displayName: 'Scan job'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+      mkdir report
+    displayName: "Install Trivy"
+    
 - stage: 'Testing'
   displayName: 'App Build & Test'
   jobs:  
