@@ -112,13 +112,13 @@ stages:
         image: node:12.22.1-alpine3.11
         dockerfile: 'Dockerfile'
     
-    - script: |
-        echo $(policyStatus)
-        echo $(billOfMaterials)
-        cat $(billOfMaterials)
-        echo $(vulnerabilities)
-        cat $(vulnerabilities)
-      displayName: Print scan artifacts
+#    - script: |
+#        echo $(policyStatus)
+#        echo $(billOfMaterials)
+#        cat $(billOfMaterials)
+#        echo $(vulnerabilities)
+#        cat $(vulnerabilities)
+#      displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
