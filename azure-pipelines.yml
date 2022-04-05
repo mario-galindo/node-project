@@ -114,10 +114,11 @@ stages:
         failBuild: true
         printVulnerabilityReport: true
     
-#    - script: |
+    - script: |
+        ls /home/vsts/work/1/s/anchore-reports/
 #        echo $(billOfMaterials)
 #        cat $(billOfMaterials)
-#      displayName: Print scan artifacts
+      displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
