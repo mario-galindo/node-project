@@ -111,10 +111,11 @@ stages:
       inputs:
         image: node:12.22.1-alpine3.11
         dockerfile: 'Dockerfile'
+        failBuild: true
     
     - script: |
-        echo $(billOfMaterials)
-        cat $(billOfMaterials)
+        echo $(policyCheck)
+        cat $(policyCheck)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
