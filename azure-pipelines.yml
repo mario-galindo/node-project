@@ -7,26 +7,26 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
-- stage: 'DevSecOpsAnchore'
-  displayName: 'Anchore Scan'
-  jobs:  
-  - job: 'AnchoreScan'
-    displayName: 'Anchore Scan job'
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: Anchore@0
-      inputs:
-        image: node:12.22.1-alpine3.11
-        dockerfile: 'Dockerfile'
+#- stage: 'DevSecOpsAnchore'
+#  displayName: 'Anchore Scan'
+#  jobs:  
+#  - job: 'AnchoreScan'
+#    displayName: 'Anchore Scan job'
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - task: Anchore@0
+#      inputs:
+#        image: node:12.22.1-alpine3.11
+#        dockerfile: 'Dockerfile'
     
-    - script: |
-        echo $(policyStatus)
-        echo $(billOfMaterials)
-        cat $(billOfMaterials)
-        echo $(vulnerabilities)
-        cat $(vulnerabilities)
-      displayName: Print scan artifacts
+#    - script: |
+#        echo $(policyStatus)
+#        echo $(billOfMaterials)
+#        cat $(billOfMaterials)
+#        echo $(vulnerabilities)
+#        cat $(vulnerabilities)
+#      displayName: Print scan artifacts
 
 #- stage: 'DevSecOps'
 #  displayName: 'Vulnerabilities Scans'
@@ -107,6 +107,19 @@ stages:
         tags: |
           $(tag)
           latest
+    - task: Anchore@0
+      inputs:
+        image: node:12.22.1-alpine3.11
+        dockerfile: 'Dockerfile'
+    
+    - script: |
+        echo $(policyStatus)
+        echo $(billOfMaterials)
+        cat $(billOfMaterials)
+        echo $(vulnerabilities)
+        cat $(vulnerabilities)
+      displayName: Print scan artifacts
+      
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
 
