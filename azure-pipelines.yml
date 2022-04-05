@@ -7,6 +7,19 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+- stage: 'DevSecOpsAnchore'
+  displayName: 'Anchore Scan'
+  jobs:  
+  - job: 'AnchoreScan'
+    displayName: 'Anchore Scan job'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Anchore@0
+      inputs:
+        image: 'localbuild/imagename:tag'
+        dockerfile: 'Dockerfile'
+
 - stage: 'DevSecOps'
   displayName: 'Vulnerabilities Scans'
   jobs:  
