@@ -113,10 +113,6 @@ stages:
         dockerfile: 'Dockerfile'
     
     - script: |
-#        echo $(policyStatus)
-
-#        echo $(billOfMaterials)
-#        cat $(billOfMaterials)
         echo $(vulnerabilities)
         cat $(vulnerabilities)
       displayName: Print scan artifacts
