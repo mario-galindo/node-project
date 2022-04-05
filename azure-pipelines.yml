@@ -101,7 +101,7 @@ stages:
           latest
     - task: Anchore@0
       inputs:
-        image: '$(webRepository):$(tag)'
+        image: node:12.22.1-alpine3.11
         dockerfile: 'Dockerfile'
 
     - publish: '$(Build.SourcesDirectory)/kubernetes'
