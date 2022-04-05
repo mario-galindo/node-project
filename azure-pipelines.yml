@@ -113,8 +113,8 @@ stages:
         dockerfile: 'Dockerfile'
     
     - script: |
-        echo $(vulnerabilities)
-        cat $(vulnerabilities)
+        echo $(billOfMaterials)
+        cat $(billOfMaterials)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
