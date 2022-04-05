@@ -7,37 +7,37 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
-- stage: 'DevSecOpsAnchore'
-  displayName: 'Anchore Scan'
-  jobs:  
-  - job: 'AnchoreScan'
-    displayName: 'Anchore Scan job'
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: Anchore@0
-      inputs:
-        image: 'localbuild/imagename:tag'
-        dockerfile: 'Dockerfile'
+#- stage: 'DevSecOpsAnchore'
+#  displayName: 'Anchore Scan'
+#  jobs:  
+#  - job: 'AnchoreScan'
+#    displayName: 'Anchore Scan job'
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - task: Anchore@0
+#      inputs:
+#        image: 'localbuild/imagename:tag'
+#        dockerfile: 'Dockerfile'
 
-- stage: 'DevSecOps'
-  displayName: 'Vulnerabilities Scans'
-  jobs:  
-  - job: 'Scan'
-    displayName: 'Scan job'
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: |
-        sudo apt-get install wget apt-transport-https gnupg lsb-release
-        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-        echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-        sudo apt-get update
-        sudo apt-get install trivy
-      displayName: 'Install Trivy'
-    - script: |
-        trivy image node:12.22.1-alpine3.11
-      displayName: 'Scan Docker Image'
+#- stage: 'DevSecOps'
+#  displayName: 'Vulnerabilities Scans'
+#  jobs:  
+#  - job: 'Scan'
+#    displayName: 'Scan job'
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - script: |
+#        sudo apt-get install wget apt-transport-https gnupg lsb-release
+#        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+#        echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+#        sudo apt-get update
+#        sudo apt-get install trivy
+#      displayName: 'Install Trivy'
+#    - script: |
+#        trivy image node:12.22.1-alpine3.11
+#      displayName: 'Scan Docker Image'
     
 - stage: 'Testing'
   displayName: 'App Build & Test'
@@ -99,6 +99,11 @@ stages:
         tags: |
           $(tag)
           latest
+    - task: Anchore@0
+      inputs:
+        image: '$(webRepository):$(tag)'
+        dockerfile: 'Dockerfile'
+
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
 
