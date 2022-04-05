@@ -114,8 +114,8 @@ stages:
         failBuild: true
     
     - script: |
-        echo $(policyCheck)
-        cat $(policyCheck)
+        echo $(billOfMaterials)
+        cat $(billOfMaterials)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
