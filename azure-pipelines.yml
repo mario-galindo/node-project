@@ -116,9 +116,10 @@ stages:
         image: alpine:3.10.7
         dockerfile: 'Dockerfile'
         failBuild: true
+        includeAppPackages: true
     
     - script: |
-        cat $(billOfMaterials)
+        echo $(billOfMaterials)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
