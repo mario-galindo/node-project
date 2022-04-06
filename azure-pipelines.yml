@@ -107,6 +107,10 @@ stages:
         tags: |
           $(tag)
           latest
+    - script:  docker pull alpine:3.10.7
+      workingDirectory: $(Build.SourcesDirectory)
+      displayName: 'Docker Pull'
+
     - task: Anchore@0
       inputs:
         image: alpine:3.10.7
