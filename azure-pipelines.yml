@@ -109,10 +109,9 @@ stages:
           latest
     - task: Anchore@0
       inputs:
-        image: node:12.22.1-alpine3.11
+        image: alpine:3.10.7
         dockerfile: 'Dockerfile'
         failBuild: true
-        printVulnerabilityReport: true
     
     - script: |
         ls /home/vsts/work/1/s/anchore-reports/
