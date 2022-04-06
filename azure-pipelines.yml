@@ -120,6 +120,10 @@ stages:
     
     - script: |
         echo $(billOfMaterials)
+        cat $(billOfMaterials)
+
+        echo $(vulnerabilities)
+        cat $(vulnerabilities)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
