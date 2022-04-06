@@ -118,9 +118,7 @@ stages:
         failBuild: true
     
     - script: |
-        ls /home/vsts/work/1/s/anchore-reports/
-        cat alpine_3.10.7-content-files.json
-#        cat $(billOfMaterials)
+        cat $(billOfMaterials)
       displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
