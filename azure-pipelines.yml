@@ -107,6 +107,7 @@ stages:
         tags: |
           $(tag)
           latest
+
     - script:  docker pull alpine:3.10.7
       workingDirectory: $(Build.SourcesDirectory)
       displayName: 'Docker Pull'
@@ -114,17 +115,17 @@ stages:
     - task: Anchore@0
       inputs:
         image: alpine:3.10.7
-        dockerfile: 'Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         failBuild: true
         includeAppPackages: true
     
-    - script: |
-        echo $(billOfMaterials)
-        cat $(billOfMaterials)
+#    - script: |
+#        echo $(billOfMaterials)
+#        cat $(billOfMaterials)
 
-        echo $(vulnerabilities)
-        cat $(vulnerabilities)
-      displayName: Print scan artifacts
+#        echo $(vulnerabilities)
+#        cat $(vulnerabilities)
+#      displayName: Print scan artifacts
       
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
