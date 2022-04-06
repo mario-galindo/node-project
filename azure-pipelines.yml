@@ -119,7 +119,7 @@ stages:
     
     - script: |
         ls /home/vsts/work/1/s/anchore-reports/
-#        echo $(billOfMaterials)
+        cat alpine_3.10.7-content-files.json
 #        cat $(billOfMaterials)
       displayName: Print scan artifacts
       
