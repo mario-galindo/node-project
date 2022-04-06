@@ -130,7 +130,7 @@ stages:
     - publish: '$(Build.SourcesDirectory)/kubernetes'
       artifact: manifests
     - publish: '/home/vsts/work/1/s/anchore-reports/'
-      artifact: manifests
+      artifact: noidea
 
 #- stage: 'Deploy'
 #  displayName: 'Deploy the containers'
