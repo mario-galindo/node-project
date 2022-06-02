@@ -5,7 +5,7 @@ variables:
   buildConfiguration: 'Release'
   webRepository: 'app/web'
   tag: '$(Build.BuildId)'
-  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
 
 
 stages:
