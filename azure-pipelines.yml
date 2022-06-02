@@ -82,6 +82,12 @@ stages:
     - script: |
         npm run coverage
       displayName: 'npm output coverage'
+    
+    - task: CmdLine@2
+      displayName: Check for Database Env Variables
+      inputs:
+        script: |
+          echo "Testing"
 
     - task: PublishCodeCoverageResults@1
       inputs:
