@@ -86,7 +86,7 @@ stages:
       displayName: 'npm output coverage'
     
     - task: CmdLine@2
-      condition: and(succeeded(), eq(variables.isMain, 'true'))
+      condition: eq(variables.isMain, 'true')
       displayName: Check for Database Env Variables
       inputs:
         script: |
