@@ -5,6 +5,8 @@ variables:
   buildConfiguration: 'Release'
   webRepository: 'app/web'
   tag: '$(Build.BuildId)'
+  isMain: $[eq(variables['Build.SourceBranch'], 'master')]
+
 
 stages:
 #- stage: 'DevSecOpsAnchore'
@@ -84,6 +86,7 @@ stages:
       displayName: 'npm output coverage'
     
     - task: CmdLine@2
+      condition: and(succeeded(), eq(variables.isMain, 'true'))
       displayName: Check for Database Env Variables
       inputs:
         script: |
