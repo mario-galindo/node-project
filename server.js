@@ -4,7 +4,7 @@ const { port, node_env } = require("./config");
 const swaggerUi = require("swagger-ui-express");
 swaggerDocument = require("./swagger.json");
 
-app.get("/", (req, res) =>
+app.get("/users", (req, res) =>
   res.send([
     {
       id: 10,

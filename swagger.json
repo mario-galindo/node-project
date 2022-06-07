@@ -1,18 +1,67 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Node Microservice",
-      "description": "Node Project Sample",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node Microservice",
+    "description": "Node Project Sample",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
       }
     },
-    "host": "localhost:3000",
-    "basePath": "/",
-    "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"]
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    }
   }
-  
+}
