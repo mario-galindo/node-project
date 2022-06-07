@@ -36,11 +36,9 @@ app.get("/users", (req, res) =>
   ])
 );
 
-app.use(
-  '/docs',
-  swaggerUi.serve, 
-  swaggerUi.setup(swaggerDocument)
-);
+app.get("/api/v1", (req, res) => res.status(200).send("Status: Ok"));
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port);
 console.log(`Server on port: ${port}, Environment: ${node_env}`);
