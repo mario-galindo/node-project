@@ -1,6 +1,7 @@
 {
   "name": "node-project",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -14,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "jest": "^27.5.1",
