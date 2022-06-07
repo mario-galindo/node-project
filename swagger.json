@@ -29,6 +29,20 @@
           }
         }
       }
+    },
+    "/api/v1": {
+      "get": {
+        "tags": ["Health Check"],
+        "summary": "Get service status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Health"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -62,6 +76,9 @@
     "Users": {
       "type": "array",
       "$ref": "#/definitions/User"
+    },
+    "Health":{
+      "type":"string"
     }
   }
 }
