@@ -4,7 +4,8 @@ const { port, node_env } = require("./config");
 const swaggerUi = require("swagger-ui-express");
 swaggerDocument = require("./swagger.json");
 
-app.get("/users", (req, res) =>
+app.get("/users", (req, res) => {
+  console.log("sending response!");
   res.send([
     {
       id: 10,
@@ -33,8 +34,8 @@ app.get("/users", (req, res) =>
       environment: node_env,
       host: req.hostname,
     },
-  ])
-);
+  ]);
+});
 
 app.get("/api/v1", (req, res) => res.status(200).send("Status: Ok"));
 
