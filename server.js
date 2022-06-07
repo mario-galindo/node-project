@@ -1,7 +1,8 @@
 const express = require("express");
-
 const app = express();
 const { port, node_env } = require("./config");
+const swaggerUi = require("swagger-ui-express");
+swaggerDocument = require("./swagger.json");
 
 app.get("/", (req, res) =>
   res.send([
@@ -33,6 +34,12 @@ app.get("/", (req, res) =>
       host: req.hostname,
     },
   ])
+);
+
+app.use(
+  '/docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
 );
 
 app.listen(port);
